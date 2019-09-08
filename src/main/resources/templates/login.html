@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.css}" rel="stylesheet">
+    <!--<link th:href="@{/asserts/css/signin.css}" rel="stylesheet">-->
+</head>
+<body>
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#regist" role="tab" data-toggle="tab">登录</a></li>
+        <li role="presentation"><a href="#login" role="tab" data-toggle="tab">注册</a></li>
+    </ul>
+
+    <!-- 面板区 -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="regist">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="loginEmail" class="col-sm-2 control-label">电子邮箱：</label>
+                    <div class="col-md-3 col-sm-5">
+                        <input type="email" class="form-control" id="loginEmail" placeholder="请输入邮箱">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" class="col-sm-2 control-label">密码：</label>
+                    <div class="col-md-3 col-sm-5">
+                        <input type="password" class="form-control" id="loginPassword" placeholder="请输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> 记住我
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-5 col-md-3">
+                        <button type="submit" class="btn btn-info col-sm-12">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="login">
+            <form class="form-horizontal" id="registForm">
+                <div class="form-group">
+                    <label for="registEmail" class="col-sm-2 control-label">电子邮箱：</label>
+                    <div class="col-md-3 col-sm-5">
+                        <input type="email" name="userName" class="form-control" id="registEmail" placeholder="请输入邮箱">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="verification" class="col-sm-2 control-label">验证码：</label>
+                    <div class="col-md-2 col-sm-3">
+                        <input type="text" name="verification" class="form-control" id="verification" placeholder="请输入验证码">
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <input type="button" class="btn btn-info verification" onclick="daojishi(60,this)" value="获取验证码"></input>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="rgeistPassword" class="col-sm-2 control-label">密码：</label>
+                    <div class="col-md-3 col-sm-5">
+                        <input type="password" name="password" class="form-control" id="rgeistPassword" placeholder="请输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rgeistPassword1" class="col-sm-2 control-label">确认密码</label>
+                    <div class="col-md-3 col-sm-5">
+                        <input type="password" class="form-control" id="rgeistPassword1" placeholder="再次输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-5 col-md-3">
+                        <button type="submit" class="btn btn-info col-sm-12" id="registbtn">注册</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.js}"></script>
+    <script>
+        $(function () {
+            $('#regist a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            })
+        })
+        function daojishi(seconds,obj) {
+            if (seconds > 1){
+                seconds--;
+                $(obj).val(seconds+"秒后可重新获取").attr("disabled",true);//禁用按钮
+                //定时1秒调用一次
+                setTimeout(function () {
+                    daojishi(seconds,obj);
+                },1000);
+            } else{
+                $(obj).val("获取验证码").attr("disabled",false);//启用按钮
+            }
+        }
+        //获取验证码
+        $(".verification").click(function () {
+            $.ajax({
+                type:"Get",
+                url:"/verification",
+                data:'email='+$('#registEmail').val(),
+                dataType:'json'
+
+            })
+        })
+        //注册用户
+        $("#registbtn").click(function () {
+            $.ajax({
+                tpye:"post",
+                url:"/regist",
+                data:$("#registForm").serialize(),
+                success:function(data) {
+                    if (data.code = 200){
+                        location.href="/login.html";
+                    } else{
+                        alert(data.msg);
+                    }
+
+                }
+            })
+        })
+
+
+    </script>
+</body>
+</html>
