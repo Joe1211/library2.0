@@ -5276,3 +5276,60 @@ java.lang.NullPointerException: null
 2019-09-09 14:20:59.059 DEBUG 15636 --- [http-nio-8080-exec-2] c.j.l.m.UserMapper.selectByUserName      : ==>  Preparing: select id, user_name, password, nick_name from user where user_name = ? 
 2019-09-09 14:20:59.060 DEBUG 15636 --- [http-nio-8080-exec-2] c.j.l.m.UserMapper.selectByUserName      : ==> Parameters: 1652744678@qq.com(String)
 2019-09-09 14:20:59.091 DEBUG 15636 --- [http-nio-8080-exec-2] c.j.l.m.UserMapper.selectByUserName      : <==      Total: 1
+2019-09-09 15:16:22.664  INFO 10448 --- [main] com.joe.library.LibraryApplication       : Starting LibraryApplication on DESKTOP-922UDQS with PID 10448 (C:\Users\16527\IdeaProjects\library2.0\target\classes started by 16527 in C:\Users\16527\IdeaProjects\library2.0)
+2019-09-09 15:16:22.668 DEBUG 10448 --- [main] com.joe.library.LibraryApplication       : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-09 15:16:22.668  INFO 10448 --- [main] com.joe.library.LibraryApplication       : No active profile set, falling back to default profiles: default
+2019-09-09 15:16:23.353  INFO 10448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-09 15:16:23.355  INFO 10448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-09 15:16:23.379  INFO 10448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 repository interfaces.
+2019-09-09 15:16:23.621  INFO 10448 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.joe.library.config.ShiroConfig$$EnhancerBySpringCGLIB$$ffc08135] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:16:23.634  INFO 10448 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4493a75b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:16:23.673  INFO 10448 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'hashedCredentialsMatcher' of type [org.apache.shiro.authc.credential.HashedCredentialsMatcher] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:16:23.676  INFO 10448 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [com.joe.library.config.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:16:24.331  INFO 10448 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:16:24.511  INFO 10448 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-09-09 15:16:24.527  INFO 10448 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-09 15:16:24.528  INFO 10448 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.24]
+2019-09-09 15:16:24.636  INFO 10448 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-09 15:16:24.636  INFO 10448 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1902 ms
+2019-09-09 15:16:25.311  INFO 10448 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-09 15:16:25.366  INFO 10448 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-09 15:16:25.633  INFO 10448 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-09 15:16:25.636  INFO 10448 --- [main] com.joe.library.LibraryApplication       : Started LibraryApplication in 3.319 seconds (JVM running for 4.512)
+2019-09-09 15:16:33.842  INFO 10448 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-09 15:16:33.842  INFO 10448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-09 15:16:33.849  INFO 10448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2019-09-09 15:16:48.519  INFO 10448 --- [http-nio-8080-exec-7] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-09-09 15:16:48.910 DEBUG 10448 --- [http-nio-8080-exec-7] c.j.l.m.UserMapper.selectByUserName      : ==>  Preparing: select id, user_name, password, nick_name from user where user_name = ? 
+2019-09-09 15:16:48.928 DEBUG 10448 --- [http-nio-8080-exec-7] c.j.l.m.UserMapper.selectByUserName      : ==> Parameters: 999900651(String)
+2019-09-09 15:16:48.972 DEBUG 10448 --- [http-nio-8080-exec-7] c.j.l.m.UserMapper.selectByUserName      : <==      Total: 0
+2019-09-09 15:16:58.029 DEBUG 10448 --- [http-nio-8080-exec-8] c.j.l.m.UserMapper.selectByUserName      : ==>  Preparing: select id, user_name, password, nick_name from user where user_name = ? 
+2019-09-09 15:16:58.030 DEBUG 10448 --- [http-nio-8080-exec-8] c.j.l.m.UserMapper.selectByUserName      : ==> Parameters: 99990065111(String)
+2019-09-09 15:16:58.060 DEBUG 10448 --- [http-nio-8080-exec-8] c.j.l.m.UserMapper.selectByUserName      : <==      Total: 0
+2019-09-09 15:17:14.991  INFO 18652 --- [main] com.joe.library.LibraryApplication       : Starting LibraryApplication on DESKTOP-922UDQS with PID 18652 (C:\Users\16527\IdeaProjects\library2.0\target\classes started by 16527 in C:\Users\16527\IdeaProjects\library2.0)
+2019-09-09 15:17:14.994 DEBUG 18652 --- [main] com.joe.library.LibraryApplication       : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-09 15:17:14.995  INFO 18652 --- [main] com.joe.library.LibraryApplication       : No active profile set, falling back to default profiles: default
+2019-09-09 15:17:15.789  INFO 18652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-09 15:17:15.791  INFO 18652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-09 15:17:15.817  INFO 18652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 repository interfaces.
+2019-09-09 15:17:16.067  INFO 18652 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.joe.library.config.ShiroConfig$$EnhancerBySpringCGLIB$$9f93bfe3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:17:16.080  INFO 18652 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e466e609] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:17:16.116  INFO 18652 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'hashedCredentialsMatcher' of type [org.apache.shiro.authc.credential.HashedCredentialsMatcher] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:17:16.119  INFO 18652 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'userRealm' of type [com.joe.library.config.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:17:16.825  INFO 18652 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-09 15:17:17.016  INFO 18652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-09-09 15:17:17.037  INFO 18652 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-09 15:17:17.038  INFO 18652 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.24]
+2019-09-09 15:17:17.130  INFO 18652 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-09 15:17:17.130  INFO 18652 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2072 ms
+2019-09-09 15:17:17.847  INFO 18652 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-09 15:17:17.906  INFO 18652 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-09-09 15:17:18.194  INFO 18652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-09 15:17:18.197  INFO 18652 --- [main] com.joe.library.LibraryApplication       : Started LibraryApplication in 3.611 seconds (JVM running for 4.807)
+2019-09-09 15:17:25.916  INFO 18652 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-09 15:17:25.916  INFO 18652 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-09 15:17:25.924  INFO 18652 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2019-09-09 15:17:31.610  INFO 18652 --- [http-nio-8080-exec-2] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-09-09 15:17:31.972 DEBUG 18652 --- [http-nio-8080-exec-2] c.j.l.m.UserMapper.selectByUserName      : ==>  Preparing: select id, user_name, password, nick_name from user where user_name = ? 
+2019-09-09 15:17:31.990 DEBUG 18652 --- [http-nio-8080-exec-2] c.j.l.m.UserMapper.selectByUserName      : ==> Parameters: 999900651(String)
+2019-09-09 15:17:32.035 DEBUG 18652 --- [http-nio-8080-exec-2] c.j.l.m.UserMapper.selectByUserName      : <==      Total: 0

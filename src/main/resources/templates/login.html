@@ -18,17 +18,17 @@
     <!-- 面板区 -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="regist">
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="loginForm">
                 <div class="form-group">
                     <label for="loginEmail" class="col-sm-3 col-md-3 control-label">电子邮箱：</label>
                     <div class="col-md-8 col-sm-5">
-                        <input type="email" class="form-control" id="loginEmail" placeholder="请输入邮箱">
+                        <input type="email" name="userName" class="form-control" id="loginEmail" placeholder="请输入邮箱">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword" class="col-sm-3 col-md-3 control-label">密码：</label>
                     <div class="col-md-8 col-sm-5">
-                        <input type="password" class="form-control" id="loginPassword" placeholder="请输入密码">
+                        <input type="password" name="password" class="form-control" id="loginPassword" placeholder="请输入密码">
                     </div>
                 </div>
                 <div class="form-group">
@@ -95,7 +95,7 @@
                 e.preventDefault();
                 $(this).tab('show');
             });
-            //form表单验证
+            //注册form表单验证
             $('#registForm').bootstrapValidator({
                 message: 'This value is not valid',
                 feedbackIcons: {
@@ -160,6 +160,39 @@
                     }
                 }
             });
+            //登录form表单验证
+            $("#loginForm").bootstrapValidator({
+                message: 'This value is not valid',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields:{
+                    userName: {
+                        validators: {
+                            notEmpty: {
+                                message: '邮箱不能为空'
+                            },
+                            emailAddress: {
+                                message: '邮箱地址格式有误'
+                            },
+                        }
+                    },
+                    password: {
+                        validators: {
+                            notEmpty: {
+                                message: '密码不能为空'
+                            },
+                            stringLength: {
+                                min: 6,
+                                max: 18,
+                                message: '密码在6-18位之间'
+                            }
+                        }
+                    }
+                }
+            })
         });
         function daojishi(seconds,obj) {
             if (seconds > 1){
