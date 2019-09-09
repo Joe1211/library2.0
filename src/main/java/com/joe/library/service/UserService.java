@@ -53,6 +53,15 @@ public class UserService {
     }
 
     /**
+     * 更具username查询
+     * @param username
+     * @return
+     */
+    public User selectByUsername(String username){
+        return userMapper.selectByUserName(username);
+    }
+
+    /**
      * 判断验证码是否正确
      * @param key
      * @param verification

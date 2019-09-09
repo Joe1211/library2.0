@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @authr 乔
@@ -48,13 +50,18 @@ public class UserController {
         return "regist";
     }
 
-
-    @PostMapping("/user/regist")
+    /**
+     * 用户注册
+     * @param user
+     * @param verificationCode
+     * @return
+     */
+    @GetMapping("/user/regist")
     @ResponseBody
-    public RestMsg<Object> regist(User user, String verification){
+    public RestMsg<Object> regist(User user, String verificationCode){
         RestMsg<Object> restMsg = new RestMsg<>();
         //判断验证码是否正确
-        boolean verification1 = userService.isVerification(user.getUserName(), verification);
+        boolean verification1 = userService.isVerification(user.getUserName(), verificationCode);
         if(verification1){
             //给密码进行盐值加密
             String hashAlgorithnName="MD5";
@@ -70,6 +77,19 @@ public class UserController {
         }else{
             return restMsg.errorMsg("验证码不正确");
         }
+    }
+
+    @PostMapping("/user/username")
+    @ResponseBody
+    public Map byUserName(@RequestParam("userName") String username ){
+        Map<String,Boolean> map = new HashMap<>();
+        User user = userService.selectByUsername(username);
+        if (StringUtils.isEmpty(user)){
+            map.put("valid",true);
+        }else{
+            map.put("valid",false);
+        }
+        return map;
     }
 
     /**
