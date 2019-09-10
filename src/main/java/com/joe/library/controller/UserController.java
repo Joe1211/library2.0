@@ -3,7 +3,12 @@ package com.joe.library.controller;
 import com.joe.library.Util.RestMsg;
 import com.joe.library.pojo.User;
 import com.joe.library.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -50,6 +55,11 @@ public class UserController {
         return "regist";
     }
 
+    @GetMapping("/index")
+    public String toIndex(){
+        return "index";
+    }
+
     /**
      * 用户注册
      * @param user
@@ -79,6 +89,35 @@ public class UserController {
         }
     }
 
+    @PostMapping("user/login")
+    public String login(User user, Model model){
+        /**
+         * 使用shiro编写认证操作
+         */
+        //获取Subject
+        Subject subject = SecurityUtils.getSubject();
+        //封装用户名密码
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());
+        //执行登录方法
+        try{
+        subject.login(token);
+        return "redirect:/index";
+        }catch (UnknownAccountException e){
+            //登录失败，用户不存在
+            model.addAttribute("msg","用户不存在");
+            return "login";
+        }catch (IncorrectCredentialsException e){
+            //登录失败，密码错误
+            model.addAttribute("msg","密码错误");
+            return "login";
+        }
+    }
+
+    /**
+     * 注册时验证邮箱是否注册
+     * @param username
+     * @return
+     */
     @PostMapping("/user/username")
     @ResponseBody
     public Map byUserName(@RequestParam("userName") String username ){

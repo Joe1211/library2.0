@@ -40,7 +40,11 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="user" domainObjectName="User" enableCountByExample="flase"
+        <table tableName="role" domainObjectName="Role" enableCountByExample="flase"
+               enableUpdateByExample="flase" enableDeleteByExample="flase" enableSelectByExample="flase"
+               selectByExampleQueryId="flase">
+        </table>
+        <table tableName="permission" domainObjectName="Permission" enableCountByExample="flase"
                enableUpdateByExample="flase" enableDeleteByExample="flase" enableSelectByExample="flase"
                selectByExampleQueryId="flase">
         </table>

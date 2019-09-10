@@ -18,7 +18,8 @@
     <!-- 面板区 -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="regist">
-            <form class="form-horizontal" id="loginForm">
+            <form class="form-horizontal" id="loginForm" method="post" action="/user/login">
+                <h4 th:text="${msg}"></h4>
                 <div class="form-group">
                     <label for="loginEmail" class="col-sm-3 col-md-3 control-label">电子邮箱：</label>
                     <div class="col-md-8 col-sm-5">
@@ -42,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-12 col-md-8">
-                        <button type="button" class="btn btn-info col-sm-12">登录</button>
+                        <button type="submit" class="btn btn-info col-sm-12">登录</button>
                     </div>
                 </div>
             </form>
