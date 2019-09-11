@@ -55,9 +55,22 @@ public class UserController {
         return "regist";
     }
 
+    /**
+     * 跳转到主页
+     * @return
+     */
     @GetMapping("/index")
     public String toIndex(){
         return "index";
+    }
+
+    /**
+     * 跳转到权限不足页面
+     * @return
+     */
+    @GetMapping("/unauthorized")
+    public String toUnauthorized(){
+        return "unauthorized";
     }
 
     /**

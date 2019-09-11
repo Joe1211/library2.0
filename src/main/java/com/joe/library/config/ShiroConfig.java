@@ -40,12 +40,16 @@ public class ShiroConfig {
         filterMap.put("/regist","anon");
         filterMap.put("/verification","anon");
         filterMap.put("/user/regist","anon");
+        filterMap.put("/index","roles[user]");
 
         //拦截页面
         filterMap.put("/*","authc");
 
         //跳转页面
         shiroFilterFactoryBean.setLoginUrl("/login");
+
+        //无权限页面
+        shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
 
