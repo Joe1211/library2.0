@@ -7,9 +7,36 @@
     <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.css}" rel="stylesheet">
     <link th:href="@{/webjars/bootstrapvalidator/0.5.3/css/bootstrapValidator.css}" rel="stylesheet">
     <!--<link th:href="@{/asserts/css/signin.css}" rel="stylesheet">-->
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+        }
+        html,body{
+            width: 100%;
+            height:100%;
+            position: relative;
+        }
+        .center-block{
+            width: 500px;
+            height:300px;
+            border:1px solid lightgray;
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-60%);
+            border-radius: 5px
+        }
+        .center-block:hover{
+            box-shadow: 0px 0px 15px lightgray;
+        }
+        .tab-content{
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="center-block" style="width:500px">
+<div class="center-block" style="width:500px">
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#regist" role="tab" data-toggle="tab">登录</a></li>
         <li role="presentation"><a href="#login" role="tab" data-toggle="tab">注册</a></li>
@@ -36,7 +63,7 @@
                     <div class="col-sm-offset-3 col-sm-5">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"> 记住我
+                                <input type="checkbox" name="rememberMe"> 记住我
                             </label>
                         </div>
                     </div>
@@ -48,9 +75,9 @@
                 </div>
             </form>
         </div>
-        <div role="tabpanel" class="tab-pane" id="login">
+        <div role="tabpanel" class="tab-pane" id="login" >
             <form class="form-horizontal" id="registForm">
-                <div class="form-group">
+                <div class="form-group" >
                     <label for="registEmail" class="col-sm-3 col-md-3 control-label">电子邮箱：</label>
                     <div class="col-md-8 col-sm-5">
                         <input type="email" name="userName" class="form-control" id="registEmail" placeholder="请输入邮箱">
@@ -62,7 +89,7 @@
                         <input type="text" name="verificationCode" class="form-control" id="verification" placeholder="请输入验证码">
                     </div>
                     <div class="col-md-4 col-sm-2">
-                        <input type="button" class="btn btn-info verification" onclick="daojishi(60,this)" value="获取验证码"></input>
+                        <input type="button" id="check" class="btn btn-info verification" onclick="daojishi(60,this)" value="获取验证码"></input>
                     </div>
 
                 </div>
@@ -73,10 +100,10 @@
                     </div>
                 </div>
                 <!--<div class="form-group">-->
-                    <!--<label for="rgeistPassword1" class="col-sm-2 control-label">确认密码</label>-->
-                    <!--<div class="col-md-3 col-sm-5">-->
-                        <!--<input type="password" class="form-control" id="rgeistPassword1" placeholder="再次输入密码">-->
-                    <!--</div>-->
+                <!--<label for="rgeistPassword1" class="col-sm-2 control-label">确认密码</label>-->
+                <!--<div class="col-md-3 col-sm-5">-->
+                <!--<input type="password" class="form-control" id="rgeistPassword1" placeholder="再次输入密码">-->
+                <!--</div>-->
                 <!--</div>-->
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-10 col-md-8">
@@ -86,7 +113,7 @@
             </form>
         </div>
     </div>
-    </div>
+</div>
     <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrapvalidator/0.5.3/js/bootstrapValidator.js}"></script>
@@ -161,6 +188,11 @@
                     }
                 }
             });
+            if($('#registForm').data('bootstrapValidator').getMessages(emailAddress,validator)=='邮箱地址格式有误'&&
+            $('#registForm').data('bootstrapValidator').getMessages(notEmpty,validator)=='邮箱不能为空'){
+                $('#check').addClass('disabled');
+                return;
+            };
             //登录form表单验证
             $("#loginForm").bootstrapValidator({
                 message: 'This value is not valid',

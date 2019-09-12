@@ -1,5 +1,6 @@
 package com.joe.library.pojo;
 
+
 public class User {
     private Integer id;
 

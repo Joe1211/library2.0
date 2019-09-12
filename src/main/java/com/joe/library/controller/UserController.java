@@ -73,6 +73,11 @@ public class UserController {
         return "unauthorized";
     }
 
+    @GetMapping("/admin/index")
+    public String toAdminAindex(){
+        return "admin/index";
+    }
+
     /**
      * 用户注册
      * @param user
@@ -102,8 +107,14 @@ public class UserController {
         }
     }
 
+    /**
+     * 用户登录
+     * @param user
+     * @param model
+     * @return
+     */
     @PostMapping("user/login")
-    public String login(User user, Model model){
+    public String login(User user,String rememberMe,Model model){
         /**
          * 使用shiro编写认证操作
          */
@@ -114,7 +125,16 @@ public class UserController {
         //执行登录方法
         try{
         subject.login(token);
-        return "redirect:/index";
+        if (rememberMe != null){
+            token.setRememberMe(true);
+        }
+        Subject subject1 = SecurityUtils.getSubject();
+            boolean isadmin = subject1.hasRole("admin");
+            if (isadmin){
+                return "redirect:/admin/index";
+            }else {
+                return "redirect:/index";
+            }
         }catch (UnknownAccountException e){
             //登录失败，用户不存在
             model.addAttribute("msg","用户不存在");
